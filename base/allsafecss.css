@@ -820,6 +820,20 @@ html {
 .scaleInColor {
   animation: kScaleInColor 1500ms ease-in-out;
 }
+.section {
+	border-radius: 10px;
+	border: 2px silver solid;
+	background: #f0f0f080;
+	margin: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+	/* transition: all 0.5s ease-in-out; */
+}
+.section:empty {
+	padding: 0;
+	margin: 0;
+	border: none;
+}
 .selectedGroupButton {
   background-color: skyblue;
 }
