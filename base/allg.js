@@ -1,3 +1,4 @@
+var DIR_BASE = '../../base/';
 const ALLOW_CALIBRATION = false;
 const allPeeps = []
 const allPlayerTypes = ['me', 'human', 'AI regular', 'AI random', 'AI pass'];

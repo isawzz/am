@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6"
+  },
+  "include": [
+    "../../base/*.js", 
+    "../../m.js",
+    "." 
+, "../../app.js"  ],
+  "exclude": [
+    "coding",
+    "node_modules",
+    "../y/*",
+    "../../base/alibs/*",
+    "../../base/assets/*",
+  ]
+}

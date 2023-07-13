@@ -19078,6 +19078,16 @@ function detectItems(n) {
   if (nundef(n[0].info)) n = n.map(x => infoToItem(x));
   return n;
 }
+function detectSessionType() {
+  //port convention: flask:60xx, nodejs:40xx, live:50xx, sockets:3000, php:8080 | telecave
+  //console.log('window.location', window.location.href);
+  let loc = window.location.href;
+  DA.sessionType =
+    loc.includes('telecave') || loc.includes('8080') ? 'php'
+      : loc.includes(':40') ? 'nodejs'
+        : loc.includes(':60') ? 'flask' : 'live';
+  return DA.sessionType;
+}
 function detectSilben(words) {
   const syllableRegex = /[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi;
   return words.match(syllableRegex);
