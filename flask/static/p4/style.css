@@ -1,0 +1,53 @@
+#dMain {
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.my {
+  padding: 10px;
+  font-size: 18px;
+  color: red;
+  position: absolute;
+  bottom: 0;
+}
+
+.fadeRemove {
+  box-sizing: border-box;
+  animation: fadeRemoveAnimation 2s ease-in-out 1s forwards;
+}
+
+.appearRemove {
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: appearRemoveAnimation 3s ease-in-out forwards;
+}
+
+@keyframes appearRemoveAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+    height: 0;
+    padding: 0;
+  }
+}
+
+@keyframes fadeRemoveAnimation {
+  to {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
