@@ -4,6 +4,8 @@ async function start(){
   dFooter = mBy('dFooter');
   dFooter.innerHTML += '..DONE!';
 
+  //console.log('url',window.location)
+
 }
 
 
