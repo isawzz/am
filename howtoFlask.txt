@@ -1,0 +1,283 @@
+___ pip install flask
+___ python app0.py
+___ autorestart app on change: app.run(debug=True)
+___ set port: app.run(port=6001, debug=True)
+___ from flask import Flask, render_template, redirect, url_for 
+___ app = Flask(__name__)
+
+___ app1:
+___ render index.html: 
+@app.route('/')
+def i1_func(): return render_template('i1.html')
+___ route w/ params:
+@app.route('/<name>')
+def user(name):
+    return f'Hello {name}!'
+___ format string: f'Hello {name}!'
+___ redirect:
+return redirect(url_for('i1_func'))
+return redirect( url_for('user',name='felix') )
+
+___ app2: templating
+___ pass values from app to html:
+@app.route('/')
+@app.route('/<name>')
+def index(name='amanda'):
+    return render_template('i2.html',content=name,p=25)
+in i2.html:
+<body>
+    <h1>HELLO {{content}} #{{p+1}}</h1>
+</body>
+
+___ pass a list and use in html:
+in app2: 
+    return render_template('i2b.html',content=name,p=25)
+
+___ app3: template inheritance:
+in i3base.html: skeleton
+<head>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <h1>app3: Tim's Website</h1>
+  {% block content %}{% endblock %}
+</body>
+
+in i3a.html:
+{% extends 'i3base.html' %}
+{% block title %}A{% endblock %}
+{% block content %}
+this is Page A!
+{% endblock %}
+
+___ app4.py: GET and POST
+i4login.html:
+{% extends 'i3base.html' %}
+{% block title %}Login Page{% endblock %}
+{% block content %}
+<form action="#" method="post">
+  <p>Username:</p>
+  <p><input type="text" name="username" /></p>
+  <p><input type="submit" value="submit"></p>
+</form>
+{% endblock %}
+
+app4.py:
+from flask import request
+@app.route("/login",methods=["POST","GET"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        return redirect(url_for('user',usr=username))
+    else:
+        return render_template('i4login.html')
+
+___ app5.py: session
+from flask import session
+app.secret_key = 'asfhwjehfo dsdg' #anything
+#not can use session dict for username ...
+session will be lost once browser window is closed!
+or
+___ session lifetime
+from datetime import timedelta
+app.permanent_session_lifetime = timedelta(days=10) #hours,minutes
+___ login logout loggedin:
+@app.route("/login",methods=["POST","GET"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        session.permanent = True
+        session['username'] = username
+        return redirect(url_for('user'))
+    elif 'username' in session:
+        return redirect(url_for('user'))
+    else:
+        return render_template('i4login.html')
+
+@app.route("/logout")
+def logout():
+    session.pop('username',None)
+    return redirect(url_for('login'))
+
+@app.route("/user")
+def user():
+    if "username" in session:
+        username = session['username']
+        return f"<h1>{username}</h1>"
+    else:
+        redirect(url_for('login'))
+        
+___ flash message: (server side)
+from flask import flash 
+in any route before return: flash('hallo','info') #msg, category
+example (in app6.py):
+@app.route("/logout")
+def logout():
+    if "username" in session:
+        username = session['username']
+        flash(f'{username} logged out!','info')
+    session.pop('username',None)
+    return redirect(url_for('login'))
+___ flash message client side method a:
+in html (i6base.html): (uses bootstrap and jquery)
+  {% with messages = get_flashed_messages() %}
+  {% if messages: %}
+  <div class="alert alert-success" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+        aria-hidden="true">&times;</span></button>
+    {{ messages[-1] }}
+  </div>
+  {% endif %}
+  {% endwith %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+    window.setTimeout(function () {
+    $(".alert").fadeTo(1000, 0).slideUp(1000, function () {
+        $(this).remove();
+    });
+    }, 2000);
+});
+</script>
+
+___ flash message client side method b:
+in html (i6base.html): (vanilla) (oberhalb von Navbar)
+  {% with messages = get_flashed_messages() %}
+  {% if messages: %}
+  <div id="dPopupMessage">{{ messages[-1] }}</div>
+  <script type="text/javascript">mPopupMessage()</script>
+  {% endif %}
+  {% endwith %}
+in static/[project]/style.css :
+#dPopupMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #d43c3c;
+  border: 1px solid #ddd;
+  display: none; /* Initially hidden */
+}
+(js: mPopupMessage ist in static/allf.js)
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
+___ 
+
+
