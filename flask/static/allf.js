@@ -43650,12 +43650,14 @@ function mPopup(content, dParent, styles, id) {
   let d1 = mDiv(dParent, styles, valf(id, getUID()), content);
   return d1;
 }
-function mPopupMessage(styles={}) {
-  console.log('POPUP!!!')
-  addKeys({w:'100%',top:'25%',bg:'silver',fg:'red'},styles)
-  const popup = mBy('dPopupMessage')
-  mStyle(popup,styles); //{top:`${top}%`,w:`${w}%`})
-  popup.style.display = 'block'; // Show popup
+function mPopupMessage(msg,styles={}) {
+  let popup=mDiv(document.body,styles,null,msg);
+
+  // const popup = mBy('dPopupMessage')
+  // console.log('POPUP!!!')
+  // addKeys({w:'100%',bg:'silver',fg:'red'},styles)
+  // mStyle(popup,styles); //{top:`${top}%`,w:`${w}%`})
+  // popup.style.display = 'block'; // Show popup
 
   setTimeout(()=> {
       popup.style.display = 'none'; // Hide popup after 2000ms

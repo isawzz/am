@@ -43652,7 +43652,7 @@ function mPopup(content, dParent, styles, id) {
 }
 function mPopupMessage(styles={}) {
   console.log('POPUP!!!')
-  addKeys({w:'100%',top:'25%',bg:'silver',fg:'red'},styles)
+  addKeys({w:'100%',bg:'silver',fg:'red'},styles)
   const popup = mBy('dPopupMessage')
   mStyle(popup,styles); //{top:`${top}%`,w:`${w}%`})
   popup.style.display = 'block'; // Show popup

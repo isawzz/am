@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>My Dearest</title>
+  <title>Hello!</title>
+  <link rel="icon" type="image/png" href="/static/chat.png" >
   <link rel="stylesheet" href="/static/allsafecss.css">
   <link rel="stylesheet" href="/static/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,10 +18,12 @@
 <body>
   {% with messages = get_flashed_messages() %}
   {% if messages: %}
-  <div id="dPopupMessage">{{ messages[-1] }}</div>
-  <script type="text/javascript">mPopupMessage()</script>
+  <!-- <div>{{ messages[-1] }}</div> -->
+  <script type="text/javascript">mPopupMessage('{{ messages[-1] }}',{fg:'red'})</script>
   {% endif %}
   {% endwith %}
+
+  <div id="loader_holder" class="loader_on"><img style="width: 70px" src="/static/giphy.gif" /></div>
 
   <nav class="navbar navbar-expand navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -50,11 +53,16 @@
   <script>document.write('hallohallohallo!!!!!!!!!!!!! {{ username }}')</script>
   {% else %}
   <script>document.write('<h2 style="padding:10px">Hello, {{ username }}!</h2>')</script>
-  <div id="dMain">
+  <form onsubmit="startSpinning()" action="ask" method="post">
     <div>Enter query:</div>
-    <input type="text" id="iQuery" style="width:100%">
+    <p><input type="text" name="query" id="iQuery" style="width:100%" value="{{ query }}"/></p>
+    <p><input type="submit" value="submit"></p>
+  </form>
+  
+  <div id="dMain">
+    <!-- <p id="dResponse">answer: {{ answer }}</p> -->
+    <textarea style="width:96%;height:50%">{{ answer }}</textarea>
   </div>
-  <p id="dResponse"></p>
   {% endif %}
 
   <div id="dFooter" class="my">loading..</div>
