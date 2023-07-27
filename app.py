@@ -1,12 +1,11 @@
 from flask import Flask, flash, request, session, redirect, url_for, render_template
 from datetime import timedelta
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder='base')
 app.secret_key = "sdfhjwk5hj34k5hkjdh drt vdflfs;"
 app.permanent_session_lifetime = timedelta(days=10)
 
-
+#region login logout user routes
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
@@ -45,7 +44,9 @@ def user():
     else:
         flash(f"You are not logged in!", "info")
         return redirect(url_for("login"))
+#endregion login logout user routes
 
+#region ask
 import os
 import openai
 from dotenv import load_dotenv, find_dotenv
@@ -66,14 +67,12 @@ def askroute():
     if request.method == "POST":
         query = request.form["query"]
         session["query"] = query
-        #hier muss ich jetzt die query schicken!
-        session["answer"] = ask(query) #rephrase(ask(query),'compassionate')
-        #print(res)
-        #flash(f"Login successful!", "info")
+        session["answer"] = ask(query)
         return redirect(url_for("user"))
     else:
         session.pop("answer", None)
         return redirect(url_for("user",answer='you did not ask any question!'))
+#endregion ask
 
 
 if __name__ == "__main__":
