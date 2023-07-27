@@ -5,9 +5,19 @@ ____ (override from local) git push -f origin master
 ____ jupyter in vs code (needs jupyter extension) create file .ipynb
 ____ check admin privileges in cmd window: net session (only works as admin) (or: net session >nul 2>&1 && (echo Admin) || (echo Not Admin))
 
-_________________  langchain
+_________________  flask project org
+	main dir: app.py,.env
+	app = Flask(__name__, static_folder='base')
+	=>alle static files (js,css) in /base/js
+	=>alle templates in /templates
+	in main dir, >python app.py
+	in index.html: /base/... path von da aus fuer alle link/script
+
+_________________ live project org
+
 
 _________________ 
+
 
 ____ 
 
