@@ -4,12 +4,14 @@
     "target": "es6"
   },
   "include": [
-    "../base/*.js", 
+    "../base/js/*", 
     "." 
   ],
   "exclude": [
     "coding",
     "node_modules",
+    "_unused",
+    "flask",
     "../y/*",
     "../../base/alibs/*",
     "../../base/assets/*",

@@ -1,9 +1,14 @@
 
-onload=reload;
+onload = start;
 
-function reload(){
-  document.body.html=''
-  console.log('Session',Session)
+async function start() {
+  Session.type = detectSessionType(); // console.log('session type:',Session.type);
+  if (Session.type == 'live') { reload(); return; }
+}
+
+function reload() {
+  document.body.innerHTML = ''
+  console.log('Session', Session)
   flashMessages();
   showNavbar();
   showLoaderHolder();
@@ -11,49 +16,43 @@ function reload(){
   showFooter();
 }
 
-function flashMessages(){
-  let html=`
-  {% with messages = get_flashed_messages() %}
-  {% if messages: %}
-  <!-- <div>{{ messages[-1] }}</div> -->
-  <script type="text/javascript">mPopupMessage('{{ messages[-1] }}',{fg:'red'})</script>
-  {% endif %}
-  {% endwith %}
-  `;
-}
-function showLoaderHolder(){
-  let html=`
+function flashMessages() { if (!isEmpty(Session.message)) { mPopupMessage(Session.message, { fg: 'red', paleft: 10 }); delete Session.message; } }
+function onclickHome() { Session.message = 'clicked home'; reload(); }
+function onclickLogin() { Session.message = 'clicked home'; reload(); }
+function onclickLogout() { Session.message = 'clicked home'; reload(); }
+function showLoaderHolder() {
+  let html = `
     <div id="loader_holder" class="loader_off"><img style="width: 70px" src="/base/assets/icons/giphy.gif" /></div>
   `;
 }
-function showFooter(){
-  let html=`
+function showFooter() {
+  let html = `
     <div id="dFooter" class="my">loading..</div>
   `;
 }
-function showNavbar(){
-  let html=`
+function showNavbar() {
+  let html = `
     <nav class="navbar navbar-expand navbar-light bg-light">
       <a class="navbar-brand" href="#">Navbar</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="user">home</a>
+            <a class="nav-link hoverHue" href="#" onclick="onclickHome()">home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="login">login</a>
+            <a class="nav-link hoverHue" href="#" onclick="onclickLogin()">login</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="logout">logout</a>
+            <a class="nav-link hoverHue" href="#" onclick="onclickLogout()">logout</a>
           </li>
         </ul>
       </div>
     </nav>
   `;
-  document.body.innerHTML+=html;
+  document.body.innerHTML += html;
 }
-function showUserDependentUI(){
-  let html=`
+function showUserDependentUI() {
+  let html = `
     {% if username == '': %}
     <form action="#" method="post">
       <div>Enter username:</div>

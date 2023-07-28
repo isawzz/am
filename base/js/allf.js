@@ -437,10 +437,10 @@ function _createDivsS(items, ifs, options) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       if (options.showPics) {
         picStyles['text-shadow'] = sShade;
-        picStyles.fg = colorFrom('black', item.contrast); 
+        picStyles.fg = colorFrom('black', item.contrast);
       } else {
         textStyles['text-shadow'] = sShade;
-        textStyles.fg = colorFrom('black', item.contrast); 
+        textStyles.fg = colorFrom('black', item.contrast);
       }
     }
     if (options.showPics) {
@@ -746,7 +746,7 @@ function _getLineStart(line) {
   else if (ch == '\t') { w = 'TAB'; }
   else if (ch == '}' || ch == '{') { w = 'BRACKET' }
   else if (nundef(ch)) { w = 'UNDEFINED'; type = 'WTF' }
-  else if (ch == ' ') { w = 'SPACE'; } 
+  else if (ch == ' ') { w = 'SPACE'; }
   else if (ch == '\r') { type = 'WTF' }
   else if (nundef(fw)) { w = fw; type = 'WTF' }
   if (['async', 'class', 'const', 'function', 'var'].includes(w)) type = 'block';
@@ -1145,7 +1145,7 @@ function _makeHandArea(key, handAreaName, parentAreaId) {
     mobj.title(stringAfter(key, '.'));
     let bTitle = getBounds(mobj.parts.title);
     mobj.parts['title'].fontSize = '12px';
-    mobj.elem.style.minWidth = bTitle.width + 'px'; 
+    mobj.elem.style.minWidth = bTitle.width + 'px';
     mobj.elem.style.minHeight = '160px';
     mobj.body('hand');
     let div = mobj.parts['hand'];
@@ -1449,7 +1449,7 @@ function _prepText1_dep(items, ifs, options) {
     if (isdef(item.textShadowColor)) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       textStyles['text-shadow'] = sShade;
-      textStyles.fg = colorFrom('black', item.contrast); 
+      textStyles.fg = colorFrom('black', item.contrast);
     }
     if (options.showLabels) {
       textStyles.fg = item.fg;
@@ -3874,9 +3874,9 @@ function addDivU({ id, dParent, w, h, unit, fg, bg, position, x, y, html, classN
   if (isdef(fz)) d1.style.setProperty('fontSize', makeUnitString(fz, 'px'));
   return d1;
 }
-function addDummy(dParent,place) {
+function addDummy(dParent, place) {
   let b = mButton('', null, dParent, { opacity: 0, h: 0, w: 0, padding: 0, margin: 0, outline: 'none', border: 'none', bg: 'transparent' });
-  if (isdef(place)) mPlace(b,place);
+  if (isdef(place)) mPlace(b, place);
   b.id = 'dummy';
 }
 function addEdges(board, bid, gName, streets) {
@@ -4381,7 +4381,7 @@ function addOnelineVars(superdi, o) {
       if (signal) console.log('code1', code1);
       let k1 = o1.name = firstWord(code1, true);
       if (signal) console.log('k1', k1);
-      o1.code = 'var ' + code1; 
+      o1.code = 'var ' + code1;
       o1.sig = `var ${k1};`;
       if (isNumber(k1)) { continue; }
       if (signal) console.log('trage ein', k1, o1)
@@ -5377,7 +5377,7 @@ function aJumpby(elem, h = 40, ms = 1000) {
       { translateY: 0, scaleX: 1, scaleY: 1 },
     ],
     duration: 1000,
-    easing: 'easeInOutSine', 
+    easing: 'easeInOutSine',
   });
 }
 function all2DigitFractions() {
@@ -6174,7 +6174,7 @@ function animateColorScale(elem, color = 'green', scale = 1.5, timeoutms = 2000,
 function animatedTitle(msg = 'DU BIST DRAN!!!!!') {
   TO.titleInterval = setInterval(() => {
     let corner = CORNERS[WhichCorner++ % CORNERS.length];
-    document.title = `${corner} ${msg}`; 
+    document.title = `${corner} ${msg}`;
   }, 1000);
 }
 function animateProperty(elem, prop, start, middle, end, msDuration, forwards) {
@@ -6336,7 +6336,7 @@ function animtest(d, ms = 1000, callback) {
   let options = {
     duration: ms,
     iterations: 1,
-    easing: 'ease-out', 
+    easing: 'ease-out',
   }
   d.addEventListener('click', (ev) => {
     evNoBubble(ev);
@@ -7741,7 +7741,7 @@ function ari_pre_action() {
         if (check_if_church()) ari_start_church_stage(); else ari_start_action_stage();
       } else select_add_items(ui_get_hand_items(uplayer), post_stall_selected, 'must select your stall'); break;
     case 'stall selection': select_add_items(ui_get_hand_items(uplayer), post_stall_selected, 'must select cards for stall'); break;
-    case 'church': select_add_items(ui_get_hand_and_stall_items(uplayer), post_tithe, `must select cards to tithe ${isdef(fen.tithemin) ? ("(current minimum is "+fen.tithemin+")") : ''}`, 1, 100); break;
+    case 'church': select_add_items(ui_get_hand_and_stall_items(uplayer), post_tithe, `must select cards to tithe ${isdef(fen.tithemin) ? ("(current minimum is " + fen.tithemin + ")") : ''}`, 1, 100); break;
     case 'church_minplayer_tithe_add': select_add_items(ui_get_hand_and_stall_items(uplayer), post_tithe_minimum, `must select cards to reach at least ${fen.tithe_minimum}`, 1, 100); break;
     case 'church_minplayer_tithe_downgrade': select_add_items(ui_get_building_items(uplayer, A.payment), process_downgrade, 'must select a building to downgrade', 1, 1); break;
     case 'church_minplayer_tithe': console.log('NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
@@ -8073,7 +8073,7 @@ function ari_stats(dParent) {
     }
     player_stat_count('star', plname == U.name || isdef(fen.winners) ? ari_calc_real_vps(fen, plname) : ari_calc_fictive_vps(fen, plname), d);
     if (fen.turn.includes(plname)) {
-      show_hourglass(plname, d, 30, { left: -3, top: 0 }); 
+      show_hourglass(plname, d, 30, { left: -3, top: 0 });
     }
   }
 }
@@ -11214,7 +11214,7 @@ async function bundleGenerateFrom(htmlScriptsFile, htmlBodyFile = null, download
   for (const f of files) { let idxnew = await parseCodeFile(f, byKey, ckeys, idx); idx = idxnew; }
   let bundle_code = _assemble_code_sorted(ckeys, byKey, haveBundle);
   let knownNogos = { codingfull: ['uiGetContact'] };
-  let seed = ['start'].concat(extractOnclickFromHtml(html)); 
+  let seed = ['start'].concat(extractOnclickFromHtml(html));
   let byKeyMinimized = _minimizeCode(byKey, seed, valf(knownNogos[project], []));
   let ckeysMinimized = ckeys.filter(x => isdef(byKeyMinimized[x]));
   let closure_code = _assemble_code_sorted(ckeysMinimized, byKeyMinimized, haveBundle);
@@ -13988,8 +13988,8 @@ async function closureFromProject(project) {
     }
     byKeyMinimized[k].code = newcode.trim();
   }
-  let cvckeys = list.filter(x => isdef(byKeyMinimized[x.key]) && x.type != 'function').map(x => x.key); 
-  let funckeys = list.filter(x => isdef(byKeyMinimized[x.key]) && x.type == 'function').map(x => x.key); 
+  let cvckeys = list.filter(x => isdef(byKeyMinimized[x.key]) && x.type != 'function').map(x => x.key);
+  let funckeys = list.filter(x => isdef(byKeyMinimized[x.key]) && x.type == 'function').map(x => x.key);
   funckeys = sortCaseInsensitive(funckeys);
   let closuretext = '';
   for (const k of cvckeys) { closuretext += byKeyMinimized[k].code + '\n'; }
@@ -14009,7 +14009,7 @@ async function closureFromProject(project) {
     if (type) {
       testresult += line[0] + '=';
       let newline = isLetter(line[0]) || line[0] == '*' ? line : line[0] == '@' ? stringAfter(line, ' ') : line.substring(1);
-      let key = line.includes('{') ? stringBefore(newline, '{') : stringBefore(newline, ','); 
+      let key = line.includes('{') ? stringBefore(newline, '{') : stringBefore(newline, ',');
       key = key.trim();
       if (isdef(di[key]) && type != di[key].type) {
         console.log('duplicate key', key, type, di[key].type);
@@ -14069,7 +14069,7 @@ async function closureFromProject(project) {
   }
   let csstext = '';
   let types = ['root', 'tag', 'class', 'id', 'keyframes'];
-  let ditypes = { root: 58, tag: 't', class: 46, id: 35, keyframes: 64 }; 
+  let ditypes = { root: 58, tag: 't', class: 46, id: 35, keyframes: 64 };
   if (types.includes('root')) types = ['root'].concat(arrMinus(types, ['root']));
   types = types.map(x => ditypes[x]);
   for (const type of types) {
@@ -14271,7 +14271,7 @@ function collapseSmallLetterAreas(m, d) {
     }
   }
   let cres = gtc.join(' ');
-  d.style.gridTemplateColumns = gtc.join(' '); 
+  d.style.gridTemplateColumns = gtc.join(' ');
   let gtr = [];
   for (let r = 0; r < rows; r++) {
     gtr[r] = 'min-content';
@@ -14281,7 +14281,7 @@ function collapseSmallLetterAreas(m, d) {
     }
   }
   let rres = gtr.join(' ');
-  d.style.gridTemplateRows = gtr.join(' '); 
+  d.style.gridTemplateRows = gtr.join(' ');
 }
 function collect_data() {
   var myform = mBy("myform");
@@ -17931,7 +17931,7 @@ async function cssFromFiles(files, dir = '', types = ['root', 'tag', 'class', 'i
     if (type) {
       testresult += line[0] + '=';
       let newline = isLetter(line[0]) || line[0] == '*' ? line : line[0] == '@' ? stringAfter(line, ' ') : line.substring(1);
-      let key = line.includes('{') ? stringBefore(newline, '{') : stringBefore(newline, ','); 
+      let key = line.includes('{') ? stringBefore(newline, '{') : stringBefore(newline, ',');
       key = key.trim();
       if (isdef(di[key]) && type != di[key].type) {
         console.log('duplicate key', key, type, di[key].type);
@@ -17949,7 +17949,7 @@ async function cssFromFiles(files, dir = '', types = ['root', 'tag', 'class', 'i
   console.log('di', di)
   let neededkeys = allkeys;
   let clause = '';
-  let state = 'search_kw'; 
+  let state = 'search_kw';
   for (const kw of neededkeys) {
     let i = 0;
     for (const line of newlines) {
@@ -17984,7 +17984,7 @@ async function cssFromFiles(files, dir = '', types = ['root', 'tag', 'class', 'i
     lookupSet(dis, [o.type, o.key], o);
   }
   let text = '';
-  let ditypes = { root: 58, tag: 't', class: 46, id: 35, keyframes: 64 }; 
+  let ditypes = { root: 58, tag: 't', class: 46, id: 35, keyframes: 64 };
   if (types.includes('root')) types = ['root'].concat(arrMinus(types, ['root']));
   console.log('types', types);
   types = types.map(x => ditypes[x]);
@@ -18043,7 +18043,7 @@ function cssKeysNeeded(tcss, code, html) {
 }
 function cssKeywordType(line) {
   if (isLetter(line[0]) || line[0] == '*' && line[1] != '/') return 't';
-  else if (toLetters(':.#').some(x => line[0] == x)) return (line.charCodeAt(0)); 
+  else if (toLetters(':.#').some(x => line[0] == x)) return (line.charCodeAt(0));
   else if (line.startsWith('@keyframes')) return (line.charCodeAt(0));
   else return null;
 }
@@ -18051,12 +18051,12 @@ function cssNormalize(tcss, code, html) {
   [di, neededkeys, newlines] = cssKeysNeeded(tcss, code, html);
   console.log('needed', sortCaseInsensitive(neededkeys))
   let clause = '';
-  let state = 'search_kw'; 
+  let state = 'search_kw';
   for (const kw of neededkeys) {
     let i = 0;
     for (const line of newlines) {
       let lt = line.trim();
-      if (line.startsWith(kw) && firstWordIncluding(line, '_-: ').trim() == kw) { 
+      if (line.startsWith(kw) && firstWordIncluding(line, '_-: ').trim() == kw) {
         assertion(line.includes('{') || line.includes(','), `WEIRED LINE: ${line}`)
         if (line.includes('{')) {
           clause = '{\n'; state = 'search_clause_end';
@@ -21367,7 +21367,7 @@ function extractFilesFromHtml(html, htmlfile, ext = 'js') {
   let parts = html.split(prefix);
   parts.shift();
   let files = parts.map(x => stringBefore(x, '"'));
-  files = files.filter(x => !x.includes('alibs/') && !x.includes('assets/')); 
+  files = files.filter(x => !x.includes('alibs/') && !x.includes('assets/'));
   let files2 = [];
   for (const f of files) {
     if (f.startsWith(dirhtml)) { files2.push(f); continue; }
@@ -21398,7 +21398,7 @@ async function extractKeywords(path, trimmedlines = false) {
 }
 function extractOnclickFromHtml(html) {
   let symlist = [];
-  let onclicks = html.split('onclick="'); 
+  let onclicks = html.split('onclick="');
   onclicks.shift();
   for (const oncl of onclicks) {
     let code = stringBefore(oncl, '(');
@@ -21462,7 +21462,7 @@ function face_up(item) {
   item.faceUp = true;
 }
 function faChar(key) {
-  return String.fromCharCode('0x' + faChars[key]); 
+  return String.fromCharCode('0x' + faChars[key]);
 }
 function fadder(f, g) { return x => f(x) - g(x); }
 async function faicon_list() {
@@ -21482,7 +21482,7 @@ async function faicon_list() {
   downloadJson({ l: list }, 'liste');
 }
 async function fail_yt() {
-  let url = `http://gdata.youtube.com/feeds/api/videos`; 
+  let url = `http://gdata.youtube.com/feeds/api/videos`;
   let result = await route_path_text(url);
   console.log('result', result);
   let res = `
@@ -23082,8 +23082,8 @@ function fitWord(text, rect, dParent, styles, classes) {
 function fixedSizeGrid(m, d) {
   let rows = m.length;
   let cols = m[0].length;
-  d.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)'; 
-  d.style.gridTemplateRows = 'repeat(' + rows + ',1fr)'; 
+  d.style.gridTemplateColumns = 'repeat(' + cols + ',1fr)';
+  d.style.gridTemplateRows = 'repeat(' + rows + ',1fr)';
 }
 function fj(x) {
   return formatjson(x);
@@ -23794,7 +23794,7 @@ function g9(x, mean, stdev) {
   return f.pdf(x);
 }
 function gaChar(key) {
-  return String.fromCharCode('0x' + gaChars[key]); 
+  return String.fromCharCode('0x' + gaChars[key]);
 }
 function game_add_default_item(ev) {
   evNoBubble(ev);
@@ -23943,7 +23943,7 @@ function gAnagram() {
     let [vocab, lang, min, max] = [g.vocab, isdef(fen) ? fen.lang : g.lang, g.minWordLength, g.maxWordLength];
     let keypool = KeySets[vocab];
     keypool = keypool.filter(x => { let w = Syms[x][lang]; let l = w.length; return w.indexOf(' ') < 0 && l >= min && l <= max; });
-    let key = isdef(fen) ? fen.key : chooseRandom(keypool); 
+    let key = isdef(fen) ? fen.key : chooseRandom(keypool);
     let pic = mSym(key, dTable, { fz: 100, opacity: g.hidden ? 0 : 1 });
     if (g.hidden) {
       let d = pic;
@@ -25161,9 +25161,9 @@ function get_csv_example() {
 }
 function get_cur_menu() { if (isdef(Session.cur_menu)) window['get_' + Session.cur_menu](); }
 function get_current_superdi(dir) {
-  let diall = fromYamlFile(dir + 'z_all.yaml'); 
-  let dicode = fromYamlFile(dir + 'z_allcode.yaml'); 
-  let dihistory = fromYamlFile(dir + 'z_allhistory.yaml'); 
+  let diall = fromYamlFile(dir + 'z_all.yaml');
+  let dicode = fromYamlFile(dir + 'z_allcode.yaml');
+  let dihistory = fromYamlFile(dir + 'z_allhistory.yaml');
   let superdi = {};
   for (const type in diall) {
     for (const k in diall[type]) {
@@ -25363,7 +25363,7 @@ function get_input_value(id) {
 function get_intro() { to_server(Session.cur_user, "intro"); }
 function get_joker_info() {
   return {
-    c52key: `card_0J`, 
+    c52key: `card_0J`,
     color: "#e6194B",
     friendly: "Joker",
     key: '*Hn',
@@ -27602,7 +27602,7 @@ function getLayoutSample(n) {
   }
   let samples = {
     1: '"a"',
-    2: '"a b"', 
+    2: '"a b"',
     3: ['"a b c"', '"a a" "b c"', '"a b" "c c"'],
     4: ['"z z d" "a a c" "a a c"', '"a b" "c d"'],
     5: ['"a b e" "c c d"', '"a a b" "c d e"', '"a b e" "c d e"'],
@@ -28986,7 +28986,7 @@ function getWordSize(text, fz, family, weight = 900) {
     display: 'inline-block',
     bg: 'green',
     family: family,
-    weight: weight, 
+    weight: weight,
   };
   return getSizeWithStyles(text, st);
 }
@@ -31733,7 +31733,7 @@ function iClear(item) {
   if (isString(item)) { let id = item; if (isdef(Items[id])) item = Items[id]; else item = toElem(id); }
   let d = iDiv(item);
   if (isdef(d)) {
-    let desc = Array.from(d.querySelectorAll('[id]:not([id=""])')); 
+    let desc = Array.from(d.querySelectorAll('[id]:not([id=""])'));
     desc = desc.filter(x => isdef(Items[x.id]))
     for (const item1 of desc) iDelete(item1.id);
     mClear(d);
@@ -32035,7 +32035,7 @@ function iHigh(item) { let d = iDiv(item); mStyle(d, { bg: 'darkgray' }); }
 function iHighlight(item) { let d = iDov(item); mClass(d, 'overlaySelected'); }
 function iHouse(dParent, ns = 1, styles = { w: 500, h: 400 }) {
   let d = mDiv(dParent, { display: 'inline-grid', position: 'relative', box: true });
-  ns = isNumber(ns) ? d.style.gridTemplateAreas = getLayoutSample(ns) : ns; 
+  ns = isNumber(ns) ? d.style.gridTemplateAreas = getLayoutSample(ns) : ns;
   let s = d.style.gridTemplateAreas = ns;
   let letterList = filterDistinctLetters(s);
   let wallWidth = valf(styles.gap, 4);
@@ -32069,7 +32069,7 @@ function iInit(dParent, item) {
 function iLabel(i) { return isdef(i.live) ? i.live.dLabel : isdef(i.dLabel) ? i.dLabel : null; }
 function iLabyrint(dParent, cols, rows, styles = { w: 800, h: 400 }) {
   let d = mDiv(dParent, { display: 'inline-grid', position: 'relative', box: true });
-  ns = isNumber(ns) ? d.style.gridTemplateAreas = getLayoutSample(ns) : ns; 
+  ns = isNumber(ns) ? d.style.gridTemplateAreas = getLayoutSample(ns) : ns;
   let s = d.style.gridTemplateAreas = ns;
   let letterList = filterDistinctLetters(s);
   let wallWidth = valf(styles.gap, 4);
@@ -32927,7 +32927,7 @@ function initTABLES() {
     let pothersSpace = (space - 100) * (S.gameConfig.numPlayers - 1);
     setCSSVariable('--wPlayers', '' + pothersSpace + 'px');
     S.settings.table.defaultArea = 'a_d_objects';
-    S.settings.player.defaultArea = 'a_d_player'; 
+    S.settings.player.defaultArea = 'a_d_player';
     S.settings.player.defaultMainArea = 'a_d_game';
     tables.a_d_game = [pmainSpace, 800];
     document.getElementById('c_d_statusText').innerHTML = 'Me'
@@ -32935,7 +32935,7 @@ function initTABLES() {
     document.getElementById('a_d_player_header').innerHTML = '<p>players</p>';
     setCSSVariable('--wPlayers', '400px');
     S.settings.table.defaultArea = 'a_d_objects';
-    S.settings.player.defaultArea = 'a_d_player'; 
+    S.settings.player.defaultArea = 'a_d_player';
     S.settings.player.defaultMainArea = null;
     let d = document.getElementById('a_d_game');
     d.style.overflow = 'visible';
@@ -34246,7 +34246,7 @@ function interrupt() {
 }
 async function intersectAnimeAndAllfuncs() {
   let kws = await extractKeywords('../animex/anime.js', true);
-  console.log('kws', kws); 
+  console.log('kws', kws);
   let kws1 = await extractKeywords('../allf.js');
   let inter = intersection(kws, kws1);
   console.log('keywords', inter);
@@ -36283,7 +36283,7 @@ function load_yt_in_iframe(dParent) {
   div.id = 'iframe1';
   mStyle(div, { w: 500, h: 300 });
   mAppend(dParent, div);
-  div.src = "https://www.youtube.com/embed/3pNpHZ1yv3I"; 
+  div.src = "https://www.youtube.com/embed/3pNpHZ1yv3I";
 }
 async function loadAllGames_dep() {
   if (allGames) return;
@@ -37217,7 +37217,7 @@ function lsys_init(offx = 0, offy = 0, options = {}) {
   let system = NATURE.lsystems[i];
   let maxdepth = calc_maxdepth(12000, system.rules);
   let root = {
-    axiom: system.axiom, 
+    axiom: system.axiom,
     sentence: system.axiom,
     rules: system.rules,
     t: 'root',
@@ -37231,7 +37231,7 @@ function lsys_init(offx = 0, offy = 0, options = {}) {
     dlen: valf(system.dlen, .5),
     thickness: valf(options.thick, 1),
     dthickness: 1,
-    color: rColor(70), 
+    color: rColor(70),
     depth: Math.min(valf(system.depth, NATURE.depth), maxdepth),
     animated: false,
     jitter: false,
@@ -38511,7 +38511,7 @@ function make_superdi() {
   let superdi = {};
   for (const file of list) {
     let text = fromFile(file.path);
-    if (text.includes('= require(') || text.includes(' ol.')) { continue; } 
+    if (text.includes('= require(') || text.includes(' ol.')) { continue; }
     parseCodefile1(text, file.fname, true, file, superdi);
   }
   return superdi;
@@ -38833,7 +38833,7 @@ function makeCollectionArea(key, parentAreaId) {
     mobj.title(stringAfter(key, '.'));
     let bTitle = getBounds(mobj.parts.title);
     mobj.parts['title'].fontSize = '12px';
-    mobj.elem.style.minWidth = bTitle.width + 'px'; 
+    mobj.elem.style.minWidth = bTitle.width + 'px';
     mobj.elem.style.minHeight = '146px';
     mobj.body('hand');
     let div = mobj.parts['hand'];
@@ -39610,10 +39610,10 @@ function makeItemDiv(item, options) {
     let sShade = '0 0 0 ' + item.textShadowColor;
     if (options.showPic) {
       options.picStyles['text-shadow'] = sShade;
-      options.picStyles.fg = colorFrom('black', options.contrast); 
+      options.picStyles.fg = colorFrom('black', options.contrast);
     } else {
       options.labelStyles['text-shadow'] = sShade;
-      options.labelStyles.fg = colorFrom('black', options.contrast); 
+      options.labelStyles.fg = colorFrom('black', options.contrast);
     }
   }
   let dLabel;
@@ -40702,7 +40702,7 @@ function maPicLabelFitX(info, label, { wmax, hmax, textShadowColor, contrast = .
   if (isdef(textShadowColor)) {
     let sShade = '0 0 0 ' + textShadowColor;
     picStyles['text-shadow'] = sShade;
-    picStyles.fg = colorFrom('black', contrast); 
+    picStyles.fg = colorFrom('black', contrast);
   }
   let dPic = maPic(info, d, picStyles, isText, isOmoji);
   let maxchars = 15; let maxlines = 1;
@@ -40771,7 +40771,7 @@ function maPicSimple(key) {
 function maPicSimpleEmoHexText(hex, parent, fontSize) {
   if (isString(parent)) parent = mBy(parent);
   let d = mDiv(parent);
-  let s1 = '&#' + hex + ';'; 
+  let s1 = '&#' + hex + ';';
   d.innerHTML = s1;
   d.style.fontSize = fontSize + 'pt';
   return d;
@@ -42772,8 +42772,8 @@ function minimaxCopy(node, depth, alpha, beta, maxDepth, maxim) {
 }
 function minimizeObjects() { let ids = getDefaultObjectIds(); ids.map(x => UIS[x].minimize()); }
 function mInner(html, dParent, styles) { dParent.innerHTML = html; if (isdef(styles)) mStyle(dParent, styles); }
-function mInput(dParent, styles, id, placeholder, classtr = 'input', tabindex = null, value = '', selectOnClick=false, type = "text") {
-  let html = selectOnClick? `<input type="${type}" onclick="this.select();" id=${id} class="${classtr}" placeholder="${valf(placeholder, '')}" tabindex="${tabindex}" value="${value}">`:`<input type="${type}" id=${id} class="${classtr}" placeholder="${valf(placeholder, '')}" tabindex="${tabindex}" value="${value}">`;
+function mInput(dParent, styles, id, placeholder, classtr = 'input', tabindex = null, value = '', selectOnClick = false, type = "text") {
+  let html = selectOnClick ? `<input type="${type}" onclick="this.select();" id=${id} class="${classtr}" placeholder="${valf(placeholder, '')}" tabindex="${tabindex}" value="${value}">` : `<input type="${type}" id=${id} class="${classtr}" placeholder="${valf(placeholder, '')}" tabindex="${tabindex}" value="${value}">`;
   let d = mAppend(dParent, mCreateFrom(html));
   if (isdef(styles)) mStyle(d, styles);
   return d;
@@ -43650,6 +43650,10 @@ function mPopup(content, dParent, styles, id) {
   let d1 = mDiv(dParent, styles, valf(id, getUID()), content);
   return d1;
 }
+function mPopupMessage(msg, styles = {}) {
+  mDiv(document.body, styles, 'dPopup', msg);
+  setTimeout(() => { mBy('dPopup').remove(); }, 2000);
+}
 function mPos(d, x, y, unit = 'px') { mStyle(d, { left: x, top: y, position: 'absolute' }, unit); }
 function mPosAbs(d) { d.style.position = 'absolute'; }
 function mPosBL(d, x, y, unit = 'px') { y = valf(y, x); mStyle(d, { left: x, bottom: y, position: 'absolute' }, unit); }
@@ -44419,7 +44423,7 @@ function mSymbol(key, dParent, sz, styles = {}) {
   let hi = hStandard * fz / 100;
   let vpadding = 2 + Math.ceil((sz - hi) / 2); console.log('***vpadding', vpadding)
   let hpadding = Math.ceil((sz - wi) / 2);
-  let margin = '' + vpadding + 'px ' + hpadding + 'px'; 
+  let margin = '' + vpadding + 'px ' + hpadding + 'px';
   let newStyles = deepmergeOverride({ fz: fz, align: 'center', w: sz, h: sz, bg: 'white' }, styles);
   newStyles.fz = fz;
   let d = mDiv(dParent, newStyles);
@@ -44892,10 +44896,10 @@ function myPresent(dArea, items, options) {
       let sShade = '0 0 0 ' + item.textShadowColor;
       if (options.showPic) {
         picStyles['text-shadow'] = sShade;
-        picStyles.fg = colorFrom('black', options.contrast); 
+        picStyles.fg = colorFrom('black', options.contrast);
       } else {
         labelStyles['text-shadow'] = sShade;
-        labelStyles.fg = colorFrom('black', options.contrast); 
+        labelStyles.fg = colorFrom('black', options.contrast);
       }
     }
     let dOuter = mCreate('div', outerStyles, item.id);
@@ -45570,7 +45574,7 @@ function ohneRegexMix(s, onlylive = false) {
   let res = [];
   let opts = lookup(CODE, ['searchOptions', 'case']) == true ? '' : 'i';
   let prop = lookup(CODE, ['searchOptions', 'fulltext']) == true ? 'value' : 'key';
-  let prefix = lookup(CODE, ['searchOptions', 'where']); 
+  let prefix = lookup(CODE, ['searchOptions', 'where']);
   for (const el of arr) {
     let text = el[prop];
     if (sno.some(x => text.includes(x))) continue;
@@ -46486,7 +46490,7 @@ function onClickAreaSizes() {
   let zoomlevel = calcScreenSizeNeeded();
   let toplevelDiv = document.body.getRootNode();
   let body = document.body;
-  let d = document.getElementById('a_d_header'); 
+  let d = document.getElementById('a_d_header');
   console.log('d', getBounds(d), d)
   console.log('width', d.style.offsetWidth);
   console.log('client', window.clientInformation)
@@ -48550,7 +48554,7 @@ async function parseCodeFile(f, byKey, ckeys, idx) {
     if (type == 'WTF') { continue; }
     else if (type == 'empty') { continue; }
     else if (type == 'in_process') {
-      if (line.trim().startsWith('//')) continue; 
+      if (line.trim().startsWith('//')) continue;
       if (kw) { chunk += line + '\n'; }
     }
     else if (type == 'REGION') { if (w == type) region = stringAfter(line, '//#region ').trim(); }
@@ -49381,7 +49385,7 @@ function points_from_feature(f) {
 }
 function points_to_waypoints(pts = []) { return pts.map(x => L.latLng(x[0], x[1])); }
 function points2string(listOfPoints) {
-  return listOfPoints.map(p => '' + p.x + ',' + p.Y).join(' '); 
+  return listOfPoints.map(p => '' + p.x + ',' + p.Y).join(' ');
 }
 function pointStyleFunction(feature, resolution) {
   return new Style({
@@ -49439,7 +49443,7 @@ function polyPointsFrom(w, h, x, y, pointArr) {
     newpts.push(newp);
   }
   pts = newpts;
-  let sPoints = pts.map(p => '' + p.X + ',' + p.Y).join(' '); 
+  let sPoints = pts.map(p => '' + p.X + ',' + p.Y).join(' ');
   return sPoints;
 }
 function pop_hist() { let top = G.hist.pop(); G.selist = top.selist; }
@@ -54464,7 +54468,7 @@ function replaceALLTESTS(di, el) {
   let o = el;
   o.code = text;
   o.sig = getFunctionSignature(stringBefore(text, '\r\n'), key);
-  if (o.region == 'const') o.region = 'func'; 
+  if (o.region == 'const') o.region = 'func';
   o.type = 'func';
   di.func[key] = o;
   return di;
@@ -54490,7 +54494,7 @@ function replaceConstByFunc(di, el) {
   let o = el;
   o.code = text;
   o.sig = getFunctionSignature(stringBefore(text, '\r\n'), key);
-  if (o.region == 'const') o.region = 'func'; 
+  if (o.region == 'const') o.region = 'func';
   o.type = 'func';
   di.func[key] = o;
   return di;
@@ -61295,7 +61299,7 @@ function speechEngineGo(lang, matchingWords) {
   speechRecognitionList.addFromString(grammar, 1);
   recognition.grammars = speechRecognitionList;
   recognition.continuous = false;
-  recognition.lang = isEnglish(lang) ? 'en-US' : 'de-DE'; 
+  recognition.lang = isEnglish(lang) ? 'en-US' : 'de-DE';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
   recognition.onresult = function (event) {
@@ -64112,7 +64116,7 @@ function test_ui_extended() {
   let [dl, dr] = mColFlex(d1, [7, 2]);
   for (const d of [dl, dr]) mStyle(d, { bg: rColor('blue', 'green', .5) })
   mStyle(dr, { h: '100vh', fg: 'white' })
-  dSidebar = mDiv100(dr, { wmax: 240, overy: 'auto', overx: 'hidden' }, 'dSidebar'); 
+  dSidebar = mDiv100(dr, { wmax: 240, overy: 'auto', overx: 'hidden' }, 'dSidebar');
   dLeft = dl;
   onresize = create_left_side_extended;
   create_left_side_extended();
@@ -65316,7 +65320,7 @@ function test13_load_yt_in_iframe() {
   div.id = 'iframe1';
   mStyle(div, { w: 500, h: 300 })
   document.getElementById("map").appendChild(div);
-  div.src = "https://www.youtube.com/embed/3pNpHZ1yv3I"; 
+  div.src = "https://www.youtube.com/embed/3pNpHZ1yv3I";
 }
 function test13_makeDraggableTo() {
   let dParent = addDivToBody();
@@ -68519,7 +68523,7 @@ function toggle_sound() {
   set_sound(U.settings.silent);
 }
 function toggle_tables_off() { let a = mBy('aTables'); hide('dTables'); mStyle(a, { bg: 'silver' }); }
-function toggle_tables_on() { let a = mBy('aTables'); mStyle(a, { bg: '#afe78f' }); } 
+function toggle_tables_on() { let a = mBy('aTables'); mStyle(a, { bg: '#afe78f' }); }
 function toggle_users_off() { let a = mBy('aUsers'); hide('dUsers'); mStyle(a, { bg: 'silver' }); }
 function toggle_users_on() { let a = mBy('aUsers'); mStyle(a, { bg: 'coral' }); }
 function toggleCollapsible(ev) {
@@ -68768,7 +68772,7 @@ function toWordsX(s, sAllow = '_') {
     s1 += (special.includes(ch) ? '\\' : '') + ch + '|';
   }
   s1 = stringMinusLast(s1);
-  let arr = s.split(new RegExp(`[^(\\w|${s1})]`)); 
+  let arr = s.split(new RegExp(`[^(\\w|${s1})]`));
   return arr.filter(x => !isEmpty(x));
 }
 function toYaml(o) { return jsonToYaml(o); }
@@ -71363,7 +71367,7 @@ function updateNode(n, upd, R) {
   }
 }
 function updateOutput(R) {
-  for (const area of ['spec', 'uiTree', 'rTree', 'oidNodes', 'dicts', 'refsIds']) { 
+  for (const area of ['spec', 'uiTree', 'rTree', 'oidNodes', 'dicts', 'refsIds']) {
     clearElement(area);
   }
   if (SHOW_SPEC) { presentNodes(R.lastSpec, 'spec'); }

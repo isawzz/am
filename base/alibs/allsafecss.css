@@ -6763,6 +6763,7 @@ html {
 }
 .nav-link:hover {
   text-decoration: none;
+  color:#000;
 }
 .nav-link.disabled {
   color: #6c757d;
