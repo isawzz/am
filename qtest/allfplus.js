@@ -14,7 +14,7 @@ function addEditable(dParent, styles = {}, opts = {}) {
   //mPlace(x,'cc'); //(x,0,20)
   return x;
 }
-function detectSessionType() {
+function _detectSessionType() {
 
   //console.log('window.location', window.location.href);
   let loc = window.location.href;
@@ -160,7 +160,7 @@ function isCorrectMonth(s){
   return false;
 }
 async function loadAll() {
-  detectSessionType();
+  DA.sessionType = detectSessionType(); 
   if (DA.sessionType == 'live') {
     //load assets the live way form localhost
     await loadAssetsLive('../qtest/');

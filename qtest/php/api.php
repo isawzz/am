@@ -35,7 +35,7 @@ if ($cmd == 'login'){
     $result->status = "not_registered";
     //exit('login, isset submit, not registered');
   }
-}else if ($cmd == 'login'){ 
+}else if ($cmd == 'logout'){ 
   $_SESSION = [];
   session_unset();
   session_destroy();

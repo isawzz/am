@@ -1,13 +1,6 @@
-//var dada = {};
-async function start() {
-
-  //var d = new Date(1382086394000); let x=formatDate3(d);console.log(x);return;
-
-  await loadAll();
-  //console.log('..loader done!',Syms['crow']);
-}
+async function start() {  await loadAll(); }
 function startWithAssets(){
-  //console.log('session:', DA.sessionType)
+  console.log('session:', DA.sessionType)
 
   //console.log(coin()?'MITNEHMEN':'NICHT MITNEHMEN'); return;
   let d1 = mDiv('dMain', { w: 800, h: 800, bg: 'white' })
@@ -42,6 +35,9 @@ function test3_displayCalendar() {
   //setTimeout(myCalendar,12); //();
   //displayCalendar(7,2023);
 
+}
+function test2_formateDate3(){
+  var d = new Date(1382086394000); let x=formatDate3(d);console.log(x);return;
 }
 function test2_displayCalendar() {
   let html1 = `
