@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Messages Example</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='flash.css') }}">
+</head>
+<body>
+  <!-- Your HTML content here -->
+
+  {# Flash message container #}
+  <div class="flash-message">
+    {{ get_flashed_messages()|join('<br>') }}
+  </div>
+
+  <script>
+    // Function to animate opacity using Element.animate()
+    function animateOpacity(element, targetOpacity, duration) {
+      const keyframes = [
+        { opacity: getComputedStyle(element).opacity },
+        { opacity: targetOpacity }
+      ];
+
+      const options = {
+        duration: duration,
+        fill: 'forwards'
+      };
+
+      element.animate(keyframes, options).onfinish = () => {
+        if (targetOpacity === 0) {
+          element.style.display = 'none';
+        }
+      };
+    }
+
+    // Fade out the flash message after a delay
+    const flashMessage = document.querySelector('.flash-message');
+    animateOpacity(flashMessage, 0, 500); // Fade out duration in milliseconds
+  </script>
+</body>
+</html>
+
+<script>
+  // Fade out the flash message after a delay
+  var ms = 2000;
+  setTimeout(()=> {
+    var flashMessage = document.querySelector('.flash-message');
+    flashMessage.classList.remove('fade-in');
+    setTimeout(()=> {
+      var flashMessage = document.querySelector('.flash-message');
+      flashMessage.classList.add('fade-out');
+    }, ms); // Match the animation duration
+  }, ms); // Delay in milliseconds
+</script>
+
+
+
+<!-- Your HTML file -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POST Request Example</title>
+</head>
+<body>
+  <button onclick="sendPostRequest()">Send POST Request</button>
+
+  <script>
+    function sendPostRequest() {
+      const url = 'http://localhost:3000/api/postData'; // Replace this with your Node.js app endpoint
+
+      const dataToSend = {
+        key1: 'value1',
+        key2: 'value2'
+      };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Response from server:', data);
+      })
+      .catch(error => {
+        console.error('Error sending POST request:', error);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -18,8 +18,8 @@ function reload() {
 
 function flashMessages() { if (!isEmpty(Session.message)) { mPopupMessage(Session.message, { fg: 'red', paleft: 10 }); delete Session.message; } }
 function onclickHome() { Session.message = 'clicked home'; reload(); }
-function onclickLogin() { Session.message = 'clicked home'; reload(); }
-function onclickLogout() { Session.message = 'clicked home'; reload(); }
+function onclickLogin() { Session.message = 'clicked login'; reload(); }
+function onclickLogout() { Session.message = 'clicked logout'; reload(); }
 function showLoaderHolder() {
   let html = `
     <div id="loader_holder" class="loader_off"><img style="width: 70px" src="/base/assets/icons/giphy.gif" /></div>
