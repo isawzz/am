@@ -7,7 +7,7 @@ async function start(){
   DB = await mLoadFromBase('DB.yaml');
 }
 
-async function mFetch(data){
+async function mPost(data){
   let sess = mDetectSessionType();
   console.log('sess',sess,'data',data)
   if (sess == 'php') {

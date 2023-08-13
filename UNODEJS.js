@@ -1,3 +1,30 @@
+
+app.get('/', (req, res) => {
+  //console.log('req',Object.keys(req))
+  for(const k in req){
+    if (typeof req[k] == 'string') console.log(k,req[k]); else console.log('obj:',k)
+
+  }
+  //console.log('req',Object.keys(req))
+  for(const k in res){
+    if (typeof res[k] == 'string') console.log(k,res[k]); else console.log('obj:',k)
+  }
+  // console.log('url',req.url,req.originalUrl)
+  // console.log('res',Object.keys(res))
+  const filePath = path.join(__dirname, 'index.html'); // Replace with the actual path to your file
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('GET error:', err);
+    } else {
+      console.log('GET successfull!');
+    }
+  });
+});
+
+
+
+
+//_________________
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
