@@ -1,4 +1,75 @@
 
+//#region app.js
+const express = require('express');
+const app = express();
+const port = 3000; // Change this to your preferred port
+
+// Middleware to parse incoming JSON data
+app.use(express.json());
+
+// Serve a simple HTML form
+app.get('/', (req, res) => {
+  res.send(`
+    <form action="/submit" method="post">
+      <input type="text" name="username" placeholder="Username">
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit">Submit</button>
+    </form>
+  `);
+});
+
+// Handle POST request
+app.post('/submit', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  
+  // You can now use the username and password as needed
+  console.log('Received username:', username);
+  console.log('Received password:', password);
+  
+  res.send('Data received successfully!');
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+//#endregion
+
+
+
+
+
+
+
+
+app.get('/', (req, res) => {
+  //console.log('req',Object.keys(req))
+  for(const k in req){
+    if (typeof req[k] == 'string') console.log(k,req[k]); else console.log('obj:',k)
+
+  }
+  //console.log('req',Object.keys(req))
+  for(const k in res){
+    if (typeof res[k] == 'string') console.log(k,res[k]); else console.log('obj:',k)
+  }
+  // console.log('url',req.url,req.originalUrl)
+  // console.log('res',Object.keys(res))
+  const filePath = path.join(__dirname, 'index.html'); // Replace with the actual path to your file
+  res.sendFile(filePath, (err) => {
+    if (err) {
+      console.error('GET error:', err);
+    } else {
+      console.log('GET successfull!');
+    }
+  });
+});
+app.post('/post', function (req, res) {
+	console.log('body',req.body);
+	res.send('wieso');
+});
+
 app.get('/', (req, res) => {
   //console.log('req',Object.keys(req))
   for(const k in req){

@@ -16,7 +16,9 @@ _________________  flask project org
 _________________ live project org
 
 
-_________________ 
+_________________ cors
+in nodejs: const cors = require('cors'); app.use(cors())
+in flask: from flask_cors import CORS; 	CORS(app)
 
 
 ____ 

@@ -1,4 +1,39 @@
 
+
+async function test_post_json(data) {
+  try {
+    // POST request using the Fetch API
+    const response = await fetch('http://localhost:4001/submit', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    
+    const json = await response.json();
+    
+    return json;
+} catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+
+let result = await fetch('post',{method:'POST',body:'hallo'}).then(x => x.text());
+console.log('result', result)
+
+
+function print(x){
+  for(const k in x){
+    let val = x[k]
+    if (typeof val == 'object') print(val);
+    else if (typeof val == 'string') console.log(k,val); 
+    else console.log('obj:',k)
+
+  }
+}
+
 //#region latest multi session type start.js
 onload = start;
 
